@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <title>Sam</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" >
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Sora:wght@700&family=Work+Sans:ital,wght@0,400;0,700;1,600&display=swap">
+    <link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.2.0/css/brands.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.2.0/css/solid.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.2.0/css/fontawesome.min.css">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="toggle-switch.css">
+  </head>
+  <body>
+    <header>
+      <nav>
+        <h1 id="header-name" style="cursor:pointer">Sathiya Murthi Sankaran</h1>
+        <ul>
+          <li><a href="index.html"><img style="margin:0 auto" class="header-img" src="media/IMG_1803.jpg"/></a></li>
+          <li><a href="work.html">Work</a></li>
+          <li><a href="resume.html">Resume</a></li>
+          <li><a href="#">Contact</a></li>
+          <li><a href="blog.html">Blog</a></li>
+        </ul>
+      </nav>
+      <div class="controls">
+        <label class="toggle-switch">
+          Dark Mode
+          <input type="checkbox" id="dark-mode-toggle">
+          <div class="toggle-switch-border">
+            <div class="toggle-switch-dot"></div>
+          </div>
+        </label>
+      </div>
+    </header>
+
+    <section class="body-section">
+      <h2>Work</h2>
+      <!-- <iframe src="https://v1.embednotion.com/embed/96a85a5f97514e68b8e8fe695a2922c7"></iframe>  <style>  iframe { width: 100%; height: 500px; border: 2px solid #ccc; border-radius: 10px; padding: none; }  </style> -->
+      <iframe src="https://rasky-.notion.site/f1f0328c65044ec1a0c51c395ef897ad?v=2e0447c8d0b44906b22d2a2154f07066" style="width:100%; height: 800px;">
+    </section>
+
+    <template>
+      <NotionRenderer :blockMap="blockMap" fullPage />
+    </template>
+    
+    <script>
+    import { NotionRenderer, getPageBlocks } from "vue-notion";
+    
+    export default {
+      components: { NotionRenderer },
+      data: () => ({ blockMap: null }),
+      async created() {
+        // get Notion blocks from the API via a Notion pageId
+        this.blockMap = await getPageBlocks("8c1ab01960b049f6a282dda64a94afc7");
+      },
+    };
+    </script>
+    
+    <style>
+    @import "vue-notion/src/styles.css"; /* optional Notion-like styles */
+    </style>
+    
+    <footer>
+      <ul>
+        <li>
+          <a href="https://www.linkedin.com/in/sathiya-murthi-s-743278170/">
+            LinkedIn
+            <span class="link-icon">
+              <i class="fa-brands fa-linkedin"></i>
+            </span>
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/sam189239">
+            GitHub
+            <span class="link-icon">
+              <i class="fa-brands fa-github"></i>
+            </span>
+          </a>
+        </li>
+      </ul>
+      <p class="copywright">© 2022 Sam</p>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>
